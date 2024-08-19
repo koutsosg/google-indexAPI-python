@@ -1,0 +1,29 @@
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+
+# Ignore logs directory
+logs/
+
+# Ignore distribution/build directories
+build/
+dist/
+
+# Ignore environment files
+.env
+
+# Ignore CSV files
+*.csv
+
+# Ignore JSON key file
+apidetails.json
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore VSCode settings
+.vscode/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
