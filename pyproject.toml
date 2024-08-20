@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "google-indexAPI-python"
-version = "0.1.0"
+version = "1.1.0"
 description = "A Python-based tool for automating the submission of URLs to Google's Indexing API. This project simplifies the process of notifying Google about updates to your website, ensuring that your content is indexed quickly and efficiently."
 authors = ["koutsosg <g.koutsos123@gmail.com>"]
 license = "Custom"
