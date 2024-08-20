@@ -8,6 +8,7 @@ logs/
 # Ignore distribution/build directories
 build/
 dist/
+indexing.spec
 
 # Ignore environment files
 .env
