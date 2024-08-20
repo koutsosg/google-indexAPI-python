@@ -29,7 +29,7 @@ To set up and run the project, follow these steps:
 
    ```bash
    git clone https://github.com/koutsosg/google-indexAPI-python.git
-   cd repository
+   cd google-indexAPI-python
    ```
 
 2. **Install Poetry**
