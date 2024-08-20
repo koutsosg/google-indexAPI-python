@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['indexing.py'],
+    ['src\\indexing.py'],
     pathex=[],
     binaries=[],
     datas=[],
