@@ -1,4 +1,4 @@
 import subprocess
 
 def build():
-    subprocess.run(["pyinstaller", "--onefile", "src/indexing.py"], check=True)
+    subprocess.run(["pyinstaller", "--onefile", "--noconsole", "src/indexing.py"], check=True)
