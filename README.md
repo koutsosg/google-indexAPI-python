@@ -37,7 +37,7 @@ To set up and run the project, follow these steps:
    Ensure Poetry is installed on your system. You can install Poetry using the following command:
 
    ```bash
-   curl -sSL https://install.python-poetry.org | python3 -
+   curl -sSL https://install.python-poetry.org | python3 - |  curl -sSL https://install.python-poetry.org | python -
    ```
 
    Alternatively, follow the Poetry [installation instructions](https://python-poetry.org/docs/#installation)
@@ -46,7 +46,7 @@ To set up and run the project, follow these steps:
    Use Poetry to install the project dependencies:
 
    ```bash
-   poetry install
+   pip install poetry
    ```
 
    This command creates a virtual environment and installs all required dependencies.
