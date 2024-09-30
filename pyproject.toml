@@ -28,6 +28,7 @@ rsa = "^4.9"
 setuptools = "^72.2.0"
 six = "^1.16.0"
 tzdata = "^2024.1"
+ttkbootstrap = "^1.10.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

@@ -2,11 +2,12 @@ import os
 import csv
 import json
 from datetime import datetime
-from tkinter import Tk, Label, Button, filedialog, messagebox
-from tkinter.ttk import Frame
+from tkinter import Tk, Label, Button, filedialog, messagebox, Toplevel, Text, Scrollbar, Menu, Frame
+import webbrowser
 import pandas as pd
 from oauth2client.service_account import ServiceAccountCredentials
 import httplib2
+from ttkbootstrap import Style, Button  # Import Button from ttkbootstrap
 
 class IndexingApp(Frame):
     def __init__(self, parent):
@@ -18,22 +19,72 @@ class IndexingApp(Frame):
         self.parent.title("Google Indexing API GUI")
         self.pack(fill="both", expand=True)
 
-        # Labels and Buttons
-        self.json_label = Label(self, text="No JSON Key File Selected")
-        self.json_label.pack(pady=5)
-        self.json_button = Button(self, text="Select JSON Key File", command=self.select_json_file)
+        # Create a style
+        style = Style(theme='flatly')  # Choose a friendly theme
+
+        # Create a menu bar
+        menubar = Menu(self.parent)
+        self.parent.config(menu=menubar)
+
+        # Create an Info menu
+        info_menu = Menu(menubar, tearoff=0)
+        menubar.add_cascade(label="Help", menu=info_menu)
+        info_menu.add_command(label="About", command=self.show_info)
+        info_menu.add_command(label="More Information", command=self.open_info_url)
+
+        # Initialize the main UI
+        self.initMainUI()
+
+    def initMainUI(self):
+        # Labels and Buttons for file selection and indexing
+        self.json_label = Label(self, text="No JSON Key File Selected", font=("Helvetica", 12), bg="#34495E", fg="white")
+        self.json_label.pack(pady=10)
+        
+        # Use ttkbootstrap Button for better styling
+        self.json_button = Button(self, text="Select JSON Key File", command=self.select_json_file, style='primary.TButton')
         self.json_button.pack(pady=5)
 
-        self.csv_label = Label(self, text="No CSV File Selected")
-        self.csv_label.pack(pady=5)
-        self.csv_button = Button(self, text="Select CSV File", command=self.select_csv_file)
+        self.csv_label = Label(self, text="No CSV File Selected", font=("Helvetica", 12), bg="#34495E", fg="white")
+        self.csv_label.pack(pady=10)
+        
+        # Use ttkbootstrap Button for better styling
+        self.csv_button = Button(self, text="Select CSV File", command=self.select_csv_file, style='primary.TButton')
         self.csv_button.pack(pady=5)
 
-        self.run_button = Button(self, text="Run Indexing", command=self.run_indexing)
+        # Use ttkbootstrap Button for better styling
+        self.run_button = Button(self, text="Run Indexing", command=self.run_indexing, style='success.TButton')
         self.run_button.pack(pady=20)
 
         self.json_file = None
         self.csv_file = None
+        
+    def open_info_url(self):
+        webbrowser.open("https://github.com/koutsosg/google-indexAPI-python/releases")  # Replace with your actual URL
+
+    def show_info(self):
+        info_window = Toplevel(self.parent)
+        info_window.title("About This Application")
+
+        info_text = (
+            "This application allows you to use the Google Indexing API.\n\n"
+            "Instructions:\n"
+            "1. Select your JSON key file for authentication.\n"
+            "2. Select a CSV file containing URLs to be indexed (must have 'URL' column).\n"
+            "3. Click 'Run Indexing' to start the process.\n\n"
+            "For more information, visit: "
+            "https://github.com/koutsosg/google-indexAPI-python/releases"  # Replace with your actual URL
+        )
+
+        label = Label(info_window, text="Information", font=("Helvetica", 16))
+        label.pack(pady=10)
+
+        text_area = Text(info_window, wrap='word', width=50, height=15)
+        text_area.insert('1.0', info_text)
+        text_area.config(state='disabled')  # Make text read-only
+        text_area.pack(pady=5)
+    
+
+
 
     def select_json_file(self):
         self.json_file = filedialog.askopenfilename(filetypes=[("JSON Files", "*.json")])
@@ -130,7 +181,7 @@ class IndexingApp(Frame):
 def main():
     root = Tk()
     app = IndexingApp(root)
-    root.geometry("400x200")
+    root.geometry("400x300")
     root.mainloop()
 
 if __name__ == "__main__":
